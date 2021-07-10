@@ -29,7 +29,8 @@ class login extends Component {
         )
             .then(response => {
                 console.log(response.data);
-                sessionStorage.setItem("token", response.data.token);
+                // sessionStorage.setItem("token", response.data.token);
+                localStorage.setItem("token",response.data.token);
                 this.props.history.push('/dashboard');
             })
             .catch(error => {
@@ -48,7 +49,7 @@ render(){
             <p>
                 {this.state.error}
             </p>
-            <Button onClick={this.buttonclickedhandler} variant="primary">Primary</Button>
+            <Button onClick={this.buttonclickedhandler} variant="primary">Login</Button>
 
                 <Button href="/signup" variant="secondary">Register Team</Button>
 

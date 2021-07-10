@@ -6,6 +6,7 @@ import Login from './Containers/Login';
 import Home from './Containers/Home';
 import Signup from './Containers/Signup';
 import Dashboard from './Containers/Dashboard'
+// import ProtectedRoute from './Containers/ProtectedRoute';
 
 class App extends Component{
   render(){
@@ -16,6 +17,7 @@ class App extends Component{
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/dashboard" component={Dashboard} />
+              {/* <ProtectedRoute path="/dashboard" component={Dashboard}/> */}
           </Switch>
       </div>
     );
