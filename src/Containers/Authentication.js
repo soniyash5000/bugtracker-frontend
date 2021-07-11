@@ -1,7 +1,6 @@
 import { Component } from "react";
 import axios from 'axios';
 import Loader from "react-js-loader";
-import Dashboard from "./Dashboard";
 class Authentication extends Component{
 
     state = {
@@ -31,8 +30,8 @@ class Authentication extends Component{
           this.props.history.push('/login');
         }); 
     }
-
     render(){
+        console.log(this.props)
        return (
            <div>
                {
@@ -41,7 +40,8 @@ class Authentication extends Component{
                        {
                            return (
                            <div> 
-                               <Dashboard/>
+                               {/* dfdjhbfhk */}
+                               {this.props.page}
                             </div>
                             )
                        }
@@ -51,7 +51,6 @@ class Authentication extends Component{
                        }
                    })()
                }
-           
            </div>
        )
     }
