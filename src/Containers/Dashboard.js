@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import {Navbar,Nav,Button} from 'react-bootstrap';
+import {Card,Navbar,Nav,Button} from 'react-bootstrap';
 import axios from 'axios';
 
 class Dashboard extends Component  {
@@ -72,11 +72,23 @@ class Dashboard extends Component  {
                             // console.log(member);
                             return (
                                 <div key={member[0]}>
-                                    {member[0]}                                      
+                                    <Card style={{ width: '12rem' , 'marginBottom': '10px'}}>
+                                        <Card.Body>
+                                            <Card.Title>{member[1].name} </Card.Title>
+                                            <Card.Subtitle className="mb-2 text-muted">{member[1].email}</Card.Subtitle>
+                                            {/* <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
+                                            </Card.Text>
+                                            <Card.Link href="#">Card Link</Card.Link>
+                                            <Card.Link href="#">Another Link</Card.Link> */}
+                                        </Card.Body>
+                                        </Card>
+                                    {/* {member[0]}                                      
                                     <span> </span>  
                                     {member[1].name}  
                                     <span> </span>  
-                                    {member[1].email}
+                                    {member[1].email} */}
                                 </div>
                             )
                         }
@@ -87,7 +99,26 @@ class Dashboard extends Component  {
                             console.log(issue.author);
                             return (
                                 <div key = {index}>
+                                    {issue.assignee}
+                                    <span> </span>
+                                    {issue.author}
+                                    <span> </span>
+                                    {issue["author-email"]}
+                                    <span> </span>
+                                    {issue.description}
+                                    <span> </span>
+                                    {issue.index}
+                                    <span> </span>
+                                    {issue.priority}
+                                    <span> </span>
                                     {issue.title}
+                                    {
+                                        issue.tags.map( tag => {
+                                            return <span> {tag} </span>
+                                        }
+
+                                        )
+                                    }
                                 </div>
                             )
                         })
