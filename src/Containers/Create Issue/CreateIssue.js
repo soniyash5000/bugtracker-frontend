@@ -1,12 +1,15 @@
 import {Component} from 'react';
 import {Form,Col,Button} from 'react-bootstrap'; 
 import axios from 'axios';
+// import {Redirect} from 'react-router-dom';
+
 class createIssue extends Component {
 
     state = {
         title: '',
         description: '',
         priority: 1,
+        assignee:'',
         tags: [
            null
         ]
@@ -43,7 +46,7 @@ class createIssue extends Component {
         let createissue = this.state;
        
         event.preventDefault();
-        console.log(createissue);
+        console.log(createissue.tags);
         let token = localStorage.getItem("token");
         var config = {
             method: 'post',
@@ -51,15 +54,15 @@ class createIssue extends Component {
             headers: { 
             'x-access-token': token
             },
-            data : createIssue
+            data : createissue
         };
-        
         axios(config)
-        .then(function (response) {
-            console.log(JSON.stringify(response.data));
+        .then(response => {
+            console.log(response.data, "jdsbksb");
+            console.log(this.props);
         })
-        .catch(function (error) {
-            console.log(error.response);
+        .catch(error => {
+            console.log(error);
         });
     }
 

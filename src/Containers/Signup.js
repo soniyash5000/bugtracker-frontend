@@ -62,6 +62,7 @@ class Signup extends Component {
                 console.log(response.data);
                 // sessionStorage.setItem("token", response.data.token);
                 this.props.history.push('/login');
+                // <Redirect to="/login" />
             })
             .catch(error => {
                 console.log(error.response.data);

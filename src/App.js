@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Route,Switch} from 'react-router-dom'
+import {Redirect, Route,Switch} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './Containers/Login';
@@ -17,14 +17,18 @@ class App extends Component{
           <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
+              <Route path="/signup"  > 
+              {
+                false ? <Redirect to="/"/> : <Signup/>
+              }
+              </Route>
               <Route path="/dashboard" render={
-                (props)  => <Authentication page = {<Dashboard/>} {...props}/>
-              } 
+                  (props)  => <Authentication page = {<Dashboard/>} {...props}/>
+                } 
               />
               <Route path="/createissue" render={
-                (props)  => <Authentication page = {<CreateIssue/>} {...props}/>
-              } 
+                  (props)  => <Authentication page = {<CreateIssue/>} {...props}/>
+                } 
               />
 
               {/* <ProtectedRoute path="/dashboard" component={Dashboard}/> */}
