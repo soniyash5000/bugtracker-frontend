@@ -52,7 +52,7 @@ class Dashboard extends Component  {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                <Nav.Link href="#features">Create Issue</Nav.Link>
+                <Nav.Link href="/createIssue">Create Issue</Nav.Link>
                 {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                 </Nav>
                 <Nav>
@@ -84,11 +84,6 @@ class Dashboard extends Component  {
                                             <Card.Link href="#">Another Link</Card.Link> */}
                                         </Card.Body>
                                         </Card>
-                                    {/* {member[0]}                                      
-                                    <span> </span>  
-                                    {member[1].name}  
-                                    <span> </span>  
-                                    {member[1].email} */}
                                 </div>
                             )
                         }

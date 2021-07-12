@@ -7,7 +7,7 @@ import Home from './Containers/Home';
 import Signup from './Containers/Signup';
 import Authentication from './Containers/Authentication'
 import Dashboard from "./Containers/Dashboard";
-
+import CreateIssue from "./Containers/Create Issue/CreateIssue"
 // import ProtectedRoute from './Containers/ProtectedRoute';
 
 class App extends Component{
@@ -22,10 +22,10 @@ class App extends Component{
                 (props)  => <Authentication page = {<Dashboard/>} {...props}/>
               } 
               />
-              {/* <Route path="/createissue" render={
-                (props)  => <Authentication page = {<Home/>} {...props}/>
+              <Route path="/createissue" render={
+                (props)  => <Authentication page = {<CreateIssue/>} {...props}/>
               } 
-              /> */}
+              />
 
               {/* <ProtectedRoute path="/dashboard" component={Dashboard}/> */}
           </Switch>

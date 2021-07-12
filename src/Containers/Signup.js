@@ -87,6 +87,8 @@ class Signup extends Component {
                         <Form.Label>Project Name</Form.Label>
                     <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Project Name" />
                     </Form.Group>
+
+                    
                     Enter details of team members
                     {/* 1st member */}
                     <Form.Group controlId="email1">
