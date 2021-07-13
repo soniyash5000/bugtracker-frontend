@@ -60,13 +60,12 @@ class Signup extends Component {
         )
             .then(response => {
                 console.log(response.data);
-                // sessionStorage.setItem("token", response.data.token);
+                console.log(this.props);
                 this.props.history.push('/login');
-                // <Redirect to="/login" />
             })
             .catch(error => {
-                console.log(error.response.data);
-                this.setState({error: error.response.data.message});
+                // console.log(error.response.data);
+                // this.setState({error: error.response.data.message});
             }); 
     }
     render(){

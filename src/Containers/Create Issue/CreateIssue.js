@@ -1,7 +1,6 @@
 import {Component} from 'react';
 import {Form,Col,Button} from 'react-bootstrap'; 
 import axios from 'axios';
-// import {Redirect} from 'react-router-dom';
 
 class createIssue extends Component {
 
@@ -48,18 +47,26 @@ class createIssue extends Component {
         event.preventDefault();
         console.log(createissue.tags);
         let token = localStorage.getItem("token");
+        // var config = {
+        //     method: 'post',
+        //     url: 'https://bugtrackers-api.herokuapp.com/create-issue',
+        //     headers: { 
+        //     'x-access-token': token
+        //     },
+        //     data : createissue
+        // };
         var config = {
-            method: 'post',
-            url: 'https://bugtrackers-api.herokuapp.com/create-issue',
             headers: { 
             'x-access-token': token
-            },
-            data : createissue
+            }
         };
-        axios(config)
+        console.log(this.props);
+        axios.post('https://bugtrackers-api.herokuapp.com/create-issue',createissue,config)
         .then(response => {
             console.log(response.data, "jdsbksb");
             console.log(this.props);
+            this.props.history.push('/dashboard');
+
         })
         .catch(error => {
             console.log(error);

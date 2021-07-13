@@ -40,7 +40,7 @@ class Authentication extends Component{
                        {
                            return (
                            <div> 
-                               {/* dfdjhbfhk */}
+                               {console.log(this.props)}
                                {this.props.page}
                             </div>
                             )
