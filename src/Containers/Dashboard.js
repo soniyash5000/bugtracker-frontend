@@ -2,6 +2,7 @@ import { Component } from 'react';
 import {Table,Card,Navbar,Nav,Button} from 'react-bootstrap';
 import axios from 'axios';
 import "./Dashboard.css";
+import {Link} from 'react-router-dom';
 
 class Dashboard extends Component  {
 
@@ -110,12 +111,20 @@ class Dashboard extends Component  {
                             {
                         this.state.issues.map((issue,index) => {
                             console.log(this.props.history)
-
+                            // const path = "/issue/" + index;
+                            // console.log(path)
                             return (
-
-                                <tr onClick={() => this.issueHandler(index)} key = {index}>
+                               
+                                // onClick={() => this.issueHandler(index)} 
+                                <tr key = {index}>
+                                   
                                     <td>{issue.index}</td>
-                                    <td>{issue.title} </td>
+                                    <td >  <Link
+                                    to={{
+                                        pathname: `/issue/${index}`,
+                                        state: { fromDashboard: issue }
+                                    }}
+                                    >{issue.title}</Link> </td>
                                     <td>{issue.author} </td>
                                     <td>{issue["author-email"]} </td>
                                     <td>{issue.assignee} </td>

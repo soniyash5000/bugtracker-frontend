@@ -1,13 +1,16 @@
 
+import { useLocation } from "react-router";
 
-const issue = (props) => {
-    const str = props.location.pathname;
-    const len = str.length;
+const Issue = (props) => {
+    const location = useLocation();
+    const issue = location.state.fromDashboard; 
+    console.log(issue);
     return (
         <div>
-            {str.slice(7,len)} 
+            <p>{issue.title}</p>
+
         </div>
     );
 }
 
-export default issue;
+export default Issue;
