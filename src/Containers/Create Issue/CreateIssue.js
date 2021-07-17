@@ -60,7 +60,7 @@ class createIssue extends Component {
             'x-access-token': token
             }
         };
-        console.log(this.props);
+        console.log(this.props.history);
         axios.post('https://bugtrackers-api.herokuapp.com/create-issue',createissue,config)
         .then(response => {
             console.log(response.data, "jdsbksb");

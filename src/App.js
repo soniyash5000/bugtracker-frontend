@@ -19,7 +19,7 @@ class App extends Component{
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} /> 
               <Route path="/dashboard" render={
-                  (props)  => <Authentication page = {<Dashboard />} {...props}/>
+                  (props)  => <Authentication page = {<Dashboard  history={props.history} />} {...props}/>
                 } 
               />
               <Route path="/createissue" render={

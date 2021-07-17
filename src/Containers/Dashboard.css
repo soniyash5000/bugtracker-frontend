@@ -1,0 +1,16 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    /* font-size: 50px;
+    font-weight: 900; */
+}
+
+/* .issuestable{
+    display: inline-block;
+    flex-direction: row;
+    align-items: flex-end;
+} */
+/* .cards{
+    display: flex;
+    flex-direction: row;
+} */

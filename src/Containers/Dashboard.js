@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import {Card,Navbar,Nav,Button} from 'react-bootstrap';
+import {Table,Card,Navbar,Nav,Button} from 'react-bootstrap';
 import axios from 'axios';
+import "./Dashboard.css";
+// import {Link} from 'react-router-dom';
 
 class Dashboard extends Component  {
 
@@ -38,6 +40,10 @@ class Dashboard extends Component  {
             });
             
         }
+
+        issueHandler = (event) => {
+            this.props.history.push('/');
+        }
         
         
     render(){
@@ -46,14 +52,13 @@ class Dashboard extends Component  {
         console.log(x);
 
         return (
-            <div>
+            <div >
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="#home">Bug-Tracker</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link href="/createIssue">Create Issue</Nav.Link>
-                {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                 </Nav>
                 <Nav>
                 <Nav.Link href="/">
@@ -63,61 +68,81 @@ class Dashboard extends Component  {
                 </Nav>
             </Navbar.Collapse>
             </Navbar>
-            <div>
+            <div className="dashboard">
                 <div>
-                   <p>Team-Name: {this.state.data["team-name"]}</p>
+                   <p>Team-Name: {this.state.data["team-name"]}</p> 
                     <p>{this.state.data["project-name"]}</p>
+                    {console.log(this.state.members)}
+                    <div className = "cards">
                     {
                         this.state.members.map(member => {
-                            // console.log(member);
+                            console.log(member);
                             return (
                                 <div key={member[0]}>
                                     <Card style={{ width: '12rem' , 'marginBottom': '10px'}}>
                                         <Card.Body>
                                             <Card.Title>{member[1].name} </Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">{member[1].email}</Card.Subtitle>
-                                            {/* <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of
-                                            the card's content.
-                                            </Card.Text>
-                                            <Card.Link href="#">Card Link</Card.Link>
-                                            <Card.Link href="#">Another Link</Card.Link> */}
                                         </Card.Body>
-                                        </Card>
+                                    </Card>
                                 </div>
                             )
                         }
                         )
                     }
-                    {
-                        this.state.issues.map(function(issue,index){
-                            console.log(issue.author);
-                            return (
-                                <div key = {index}>
-                                    {issue.assignee}
-                                    <span> </span>
-                                    {issue.author}
-                                    <span> </span>
-                                    {issue["author-email"]}
-                                    <span> </span>
-                                    {issue.description}
-                                    <span> </span>
-                                    {issue.index}
-                                    <span> </span>
-                                    {issue.priority}
-                                    <span> </span>
-                                    {issue.title}
-                                    {
-                                        issue.tags.map( tag => {
-                                            return <span> {tag} </span>
-                                        }
+                    </div>
 
-                                        )
-                                    }
-                                </div>
+                    {/* Issue Table */}
+                    <Table striped bordered hover>
+                        <thead  >
+                            <tr>
+                            <th>#</th>
+                            <th>Title </th>
+                            <th>Author</th>
+                            <th>Author Email</th>
+                            <th>Assignee</th>
+                            <th>Priority</th>
+                            <th>Description</th>
+                            <th>Tags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                        this.state.issues.map((issue,index) => {
+                            // console.log(issue.author);
+                            console.log(this.props.history)
+
+                            return (
+
+                                <tr onClick={this.issueHandler} key = {index}>
+                                    <td>{issue.index}</td>
+                                    <td>{issue.title} </td>
+                                    <td>{issue.author} </td>
+                                    <td>{issue["author-email"]} </td>
+                                    <td>{issue.assignee} </td>
+                                    <td>{issue.priority} </td>
+                                    <td>{issue.description} </td>
+                                    <td>{
+                                            issue.tags.map( tag => {
+                                                return <span> {tag} </span>
+                                            }
+                                            )
+                                        } 
+                                    </td>
+                                </tr>
                             )
                         })
                     }
+                             {/* <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td> 
+                            </tr> */}
+                        </tbody>
+                    </Table>
+                    {/* <div className="issuestable">
+                    
+                    </div> */}
                 </div>
             </div>
             
