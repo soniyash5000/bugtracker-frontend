@@ -8,7 +8,7 @@ import Signup from './Containers/Signup';
 import Authentication from './Containers/Authentication'
 import Dashboard from "./Containers/Dashboard";
 import CreateIssue from "./Containers/Create Issue/CreateIssue"
-// import ProtectedRoute from './Containers/ProtectedRoute';
+import Issue from "./Components/Issue/Issue";
 
 class App extends Component{
   render(){
@@ -26,8 +26,11 @@ class App extends Component{
                   (props)  => <Authentication page = {<CreateIssue history={props.history}/>} {...props}/>
                 } 
               />
+               <Route path="/issue/:id" render={
+                  (props)  => <Authentication page = {<Issue history={props.history} location = {props.location} />} {...props}/>
+                } 
+              />
 
-              {/* <ProtectedRoute path="/dashboard" component={Dashboard}/> */}
           </Switch>
       </div>
     );

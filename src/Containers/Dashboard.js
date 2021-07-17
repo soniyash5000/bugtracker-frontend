@@ -2,7 +2,6 @@ import { Component } from 'react';
 import {Table,Card,Navbar,Nav,Button} from 'react-bootstrap';
 import axios from 'axios';
 import "./Dashboard.css";
-// import {Link} from 'react-router-dom';
 
 class Dashboard extends Component  {
 
@@ -18,12 +17,12 @@ class Dashboard extends Component  {
 
     componentDidMount(){
 
-        let token1 = localStorage.getItem("token");
+        let token = localStorage.getItem("token");
         var config = {
             method: 'get',
             url: 'https://bugtrackers-api.herokuapp.com/dashboard',
             headers: { 
-                'x-access-token': token1
+                'x-access-token': token
             }
             };
     
@@ -41,8 +40,9 @@ class Dashboard extends Component  {
             
         }
 
-        issueHandler = (event) => {
-            this.props.history.push('/');
+        issueHandler = (index) => {
+            console.log(index);
+            this.props.history.push('/issue/' + index);
         }
         
         
@@ -109,12 +109,11 @@ class Dashboard extends Component  {
                         <tbody>
                             {
                         this.state.issues.map((issue,index) => {
-                            // console.log(issue.author);
                             console.log(this.props.history)
 
                             return (
 
-                                <tr onClick={this.issueHandler} key = {index}>
+                                <tr onClick={() => this.issueHandler(index)} key = {index}>
                                     <td>{issue.index}</td>
                                     <td>{issue.title} </td>
                                     <td>{issue.author} </td>
@@ -133,16 +132,8 @@ class Dashboard extends Component  {
                             )
                         })
                     }
-                             {/* <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td> 
-                            </tr> */}
                         </tbody>
                     </Table>
-                    {/* <div className="issuestable">
-                    
-                    </div> */}
                 </div>
             </div>
             
