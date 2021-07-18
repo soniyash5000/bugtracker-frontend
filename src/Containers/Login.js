@@ -29,7 +29,6 @@ class login extends Component {
         )
             .then(response => {
                 console.log(response.data);
-                // sessionStorage.setItem("token", response.data.token);
                 localStorage.setItem("token",response.data.token);
                 this.props.history.push('/dashboard');
             })
@@ -63,9 +62,3 @@ render(){
 export default login;
 
 
-// state = {
-//     teamname : "omega",
-//     name : "name2",
-//     email: "email2@mail.com",
-//     password: "hellohello"
-// }
