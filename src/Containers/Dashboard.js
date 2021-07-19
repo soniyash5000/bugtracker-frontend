@@ -110,7 +110,7 @@ class Dashboard extends Component  {
                         <tbody>
                             {
                         this.state.issues.map((issue,index) => {
-                            console.log(this.props.history)
+                            // console.log(this.props.history)
                             // const path = "/issue/" + index;
                             // console.log(path)
                             return (
@@ -121,9 +121,11 @@ class Dashboard extends Component  {
                                     <td>{issue.index}</td>
                                     <td >  <Link
                                     to={{
-                                        pathname: `/issue/${index}`,
+                                        pathname: `/issue/${index+1}`,
                                         state: { fromDashboard: issue }
-                                    }}
+                                    } }
+                                    // target="_blank" 
+                                    // rel="noopener noreferrer"
                                     >{issue.title}</Link> </td>
                                     <td>{issue.author} </td>
                                     <td>{issue["author-email"]} </td>
