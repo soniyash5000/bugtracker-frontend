@@ -9,6 +9,8 @@ import Authentication from './Containers/Authentication'
 import Dashboard from "./Containers/Dashboard";
 import CreateIssue from "./Containers/Create Issue/CreateIssue"
 import Issue from "./Components/Issue/Issue";
+import UpdateIssue from "./Containers/Update Issue/Updateissue";
+
 
 class App extends Component{
   render(){
@@ -28,6 +30,10 @@ class App extends Component{
               />
                <Route path="/issue/:id" render={
                   (props)  => <Authentication page = {<Issue history={props.history} location = {props.location} />} {...props}/>
+                } 
+              />
+               <Route path="/update-issue/:id" render={
+                  (props)  => <Authentication page = {<UpdateIssue history={props.history} location = {props.location} />} {...props}/>
                 } 
               />
 
