@@ -2,6 +2,8 @@
 import {Component} from 'react';
 import axios from 'axios';
 import {Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom'
+
 
 class issue extends Component{
 
@@ -40,6 +42,7 @@ class issue extends Component{
         const y = x.slice(-1);
         console.log(issue.tags);
         const update = "/update-issue/" + y;
+        console.log(update)
         return (
             <div>
             <p><b>Title:- </b>{this.state.data.title}</p>
@@ -59,8 +62,15 @@ class issue extends Component{
                 }
             </p> 
             
-            <Button href={update} variant="primary">Edit Issue</Button>
-
+            <Button variant="primary">
+            <Link
+                                    to={{
+                                        pathname: {update},
+                                        state: { fromDashboard: this.state.data }
+                                    } }
+                                    >
+                Edit Issue</Link></Button>
+                {/* href={update}  */}
         </div>
         );
 
