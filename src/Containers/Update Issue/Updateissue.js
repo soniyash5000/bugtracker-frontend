@@ -12,3 +12,6 @@ class updateIssue extends Component {
         )
     }
 }
+
+
+export default updateIssue;

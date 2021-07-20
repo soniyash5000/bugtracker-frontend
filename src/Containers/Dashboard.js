@@ -29,7 +29,7 @@ class Dashboard extends Component  {
     
             axios(config)
             .then(response => {
-                // console.log(response.data)
+                console.log(response.data)
            this.setState({data: response.data.data})
            let members = response.data.data["team-members"];
             this.setState({members : Object.entries(members)});
@@ -71,8 +71,8 @@ class Dashboard extends Component  {
             </Navbar>
             <div className="dashboard">
                 <div>
-                   <p>Team-Name: {this.state.data["team-name"]}</p> 
-                    <p>{this.state.data["project-name"]}</p>
+                   <p><b>Team-Name:</b> {this.state.data["team-name"]}</p> 
+                    <p><b>Project-Name: </b>{this.state.data["project-name"]}</p>
                     {console.log(this.state.members)}
                     <div className = "cards">
                     {
@@ -106,6 +106,7 @@ class Dashboard extends Component  {
                             <th>Priority</th>
                             <th>Description</th>
                             <th>Tags</th>
+                            <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,6 +141,8 @@ class Dashboard extends Component  {
                                             )
                                         } 
                                     </td>
+                                    <td>{issue.status} </td>
+
                                 </tr>
                             )
                         })
