@@ -1,50 +1,82 @@
 import {Component} from 'react';
 import {Form,Button,Col} from 'react-bootstrap'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+
 class updateIssue extends Component {
 
     state = {
-        data: {}
-        }
-    componentDidMount(){
-        let token = localStorage.getItem("token");
-        const x = this.props.location.pathname;
-        const y = x.slice(-1);
-        console.log(x);
-        
-        var config = {
-            method: 'get',
-            url: `https://bugtrackers-api.herokuapp.com/issue-details?index=${y}`,
-            headers: { 
-                'x-access-token': token
-            }
-            };
-            // , {params: {index: 1}}
-            axios(config)
-            .then(response => {
-                // console.log(response.data)
-           this.setState({data: response.data.data})
-            })
-            .catch(error => {
-            console.log(error);
-            });
-            
+        data : this.props.location.state.fromIssue,
+        redirect : null
         }
 
+    onchangehandler  = (event) => {
+        const type = event.target.id;
+        const value = event.target.value;
+        const x = {...this.state.data};
+        x[type] = value;
+        this.setState({data : x })
+    }
+
+
+    submithandler = (event) => {
+        event.preventDefault();
+        
+        let data = {
+            title : this.state.data.title,
+            description : this.state.data.description,
+            priority : this.state.data.priority,
+            status : this.state.data.status,
+            index : this.state.data.index
+        }
+
+        let token = localStorage.getItem("token");
+        var config = {
+          method: 'post',
+          url: 'https://bugtrackers-api.herokuapp.com/update-issue',
+          headers: { 
+            'x-access-token': token
+          },
+          data : data
+        };
+        
+        axios(config)
+        .then(response => {
+          console.log(response.data);
+          this.setState({redirect : "/dashboard"});
+        //   this.props.history.push("/dashboard");
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    }
+
     render(){
+        if(this.state.redirect)
+        {
+            return (
+                <Redirect to={
+                    {
+                        pathname: this.state.redirect
+                    }
+                } />
+            )
+        }
+
+        let data = this.state.data;
         return (
             <div>
                 <Form>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter title of the issue" />
+                        <Form.Control defaultValue={data.title} onChange={this.onchangehandler} type="text" placeholder="Enter title of the issue" />
                         <Form.Text className="text-muted">
                         </Form.Text>
                     </Form.Group>
 
                     <Form.Group controlId="description">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control onChange={this.onchangehandler} as="textarea" placeholder="Enter description of the issue" />
+                        <Form.Control defaultValue={data.description} onChange={this.onchangehandler} as="textarea" placeholder="Enter description of the issue" />
                     </Form.Group>
                     
                    
@@ -53,28 +85,20 @@ class updateIssue extends Component {
 
                     <Form.Group as={Col} controlId="priority">
                     <Form.Label>Priority</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} as="select" defaultValue="Choose...">
-                    <option  >1</option>
-                    <option >2</option>
-                    <option >3</option>
-                    </Form.Control>
-                    </Form.Group> 
-                    
-                    {/* Dropdown for Status */}
-
-                    <Form.Group as={Col} controlId="priority">
-                    <Form.Label>Priority</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} as="select" defaultValue="Choose...">
+                    <Form.Control defaultValue={data.priority} onChange={this.onchangehandler} as="select" >
                     <option  >1</option>
                     <option >2</option>
                     <option >3</option>
                     </Form.Control>
                     </Form.Group> 
 
-                     <Button onClick={this.addtagshandler} variant="primary" type="submit">
-                        Add
-                    </Button>
-
+                    <Form.Group as={Col} controlId="status">
+                    <Form.Label>Status</Form.Label>
+                    <Form.Control defaultValue={data.status} onChange={this.onchangehandler} as="select" >
+                    <option  >pending</option>
+                    <option >finished</option>
+                    </Form.Control>
+                    </Form.Group> 
 
                     <Button onClick={this.submithandler} variant="primary" type="submit">
                         submit

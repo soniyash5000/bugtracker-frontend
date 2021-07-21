@@ -62,14 +62,14 @@ class issue extends Component{
                 }
             </p> 
             
-            <Button variant="primary">
+            
             <Link
                                     to={{
-                                        pathname: {update},
-                                        state: { fromDashboard: this.state.data }
+                                        pathname:  `/update-issue/${y}` ,
+                                        state: { fromIssue: this.state.data }
                                     } }
-                                    >
-                Edit Issue</Link></Button>
+                                    ><Button variant="primary">
+                Edit Issue</Button></Link>
                 {/* href={update}  */}
         </div>
         );
