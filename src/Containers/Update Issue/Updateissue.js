@@ -2,6 +2,8 @@ import {Component} from 'react';
 import {Form,Button,Col} from 'react-bootstrap'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import "./Updateissue.css"
+
 
 class updateIssue extends Component {
 
@@ -65,7 +67,7 @@ class updateIssue extends Component {
 
         let data = this.state.data;
         return (
-            <div>
+            <div className="updateIssue">
                 <Form>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
@@ -83,7 +85,7 @@ class updateIssue extends Component {
 
                     {/* Dropdown */}
 
-                    <Form.Group as={Col} controlId="priority">
+                    <Form.Group className="dropdown" as={Col} controlId="priority">
                     <Form.Label>Priority</Form.Label>
                     <Form.Control defaultValue={data.priority} onChange={this.onchangehandler} as="select" >
                     <option  >1</option>
@@ -92,7 +94,7 @@ class updateIssue extends Component {
                     </Form.Control>
                     </Form.Group> 
 
-                    <Form.Group as={Col} controlId="status">
+                    <Form.Group className="dropdown" as={Col} controlId="status">
                     <Form.Label>Status</Form.Label>
                     <Form.Control defaultValue={data.status} onChange={this.onchangehandler} as="select" >
                     <option  >pending</option>
@@ -100,12 +102,9 @@ class updateIssue extends Component {
                     </Form.Control>
                     </Form.Group> 
 
-                    <Button onClick={this.submithandler} variant="primary" type="submit">
-                        submit
+                    <Button className="updateIssueButton" onClick={this.submithandler} variant="primary" type="submit">
+                        Update Issue
                     </Button>
-
-
-
 
                 </Form>
             </div>

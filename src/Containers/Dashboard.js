@@ -84,7 +84,7 @@ class Dashboard extends Component  {
                                         <Card.Body>
                                             <Card.Title>{member[1].name} </Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">{member[1].email}</Card.Subtitle>
-                                            <Card.Subtitle className="mb-2 text-muted"><b>Issues:- </b> {member[1]["issue-working"]}</Card.Subtitle>
+                                            <Card.Subtitle className="mb-2 text-muted"><b>Issues: </b> {member[1]["issue-working"]}</Card.Subtitle>
                                         </Card.Body>
                                     </Card>
                                 </div>

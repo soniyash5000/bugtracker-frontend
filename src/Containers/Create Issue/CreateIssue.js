@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import {Form,Col,Button} from 'react-bootstrap'; 
 import axios from 'axios';
+import "./CreateIssue.css";
 
 class createIssue extends Component {
 
@@ -78,7 +79,8 @@ class createIssue extends Component {
 
 
         return(
-            <Form>
+            <div className="CreateIssue">
+                <Form>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
                         <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter title of the issue" />
@@ -93,17 +95,6 @@ class createIssue extends Component {
                     
                    
 
-                    {/* Dropdown */}
-
-                    <Form.Group as={Col} controlId="priority">
-                    <Form.Label>Priority</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} as="select" defaultValue="Choose...">
-                    <option  >1</option>
-                    <option >2</option>
-                    <option >3</option>
-                    </Form.Control>
-                    </Form.Group> 
-
                     {
                         this.state.tags.map((tag,index) =>{
                             return (
@@ -115,18 +106,28 @@ class createIssue extends Component {
                         })
                     }
                      <Button onClick={this.addtagshandler} variant="primary" type="submit">
-                        Add
+                        Add More Tags
                     </Button>
 
 
-                    <Button onClick={this.submithandler} variant="primary" type="submit">
-                        submit
+                    {/* Dropdown */}
+
+                    <Form.Group className="dropdown" as={Col} controlId="priority">
+                    <Form.Label>Priority</Form.Label>
+                    <Form.Control onChange={this.onchangehandler} as="select" defaultValue="Choose...">
+                    <option  >1</option>
+                    <option >2</option>
+                    <option >3</option>
+                    </Form.Control>
+                    </Form.Group> 
+
+
+                    <Button className="createIssueButton" onClick={this.submithandler} variant="primary" type="submit">
+                        Create Issue 
                     </Button>
-
-
-
-
                 </Form>
+            </div>
+            
         );
     }
 }

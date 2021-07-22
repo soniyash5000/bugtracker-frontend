@@ -1,0 +1,14 @@
+.CreateIssue{
+    width : 45%;
+    border: 2px solid grey;
+    margin: 25px auto ;
+    padding: 15px;
+    background-color: rgb(192, 190, 190);
+}
+.CreateIssue .dropdown{
+    padding-left: 0px;
+}
+
+.CreateIssue .createIssueButton{
+   width: 100%;
+}

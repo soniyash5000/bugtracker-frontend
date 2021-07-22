@@ -127,7 +127,7 @@ class Signup extends Component {
                     }
                         {/* Button to add user  */}
                         <Button onClick={this.addmemberhandler} variant="primary" type="submit">
-                        Add
+                        Add Another Team Member
                     </Button>
 
 

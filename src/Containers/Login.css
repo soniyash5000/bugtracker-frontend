@@ -1,0 +1,16 @@
+.Login {
+    width : 45%;
+    border: 2px solid grey;
+    margin: 25px auto ;
+    padding: 15px;
+    background-color: rgb(192, 190, 190);
+}
+
+.Login .loginSubmit{
+    width: 100%;
+}
+
+.loginRegister{
+    align-items: flex-end;
+    float: right;
+}
