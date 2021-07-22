@@ -5,9 +5,13 @@ const Home = (props) => {
     return (
         <div>
             I am home Page
-
-            <Button href="/login" variant="secondary">Login</Button>
-            <Button href="/signup" variant="secondary">Register Team</Button>
+            <p>
+                <Button href="/login" variant="secondary">Login</Button>
+            </p>
+            <p>
+                <Button href="/signup" variant="secondary">Register Team</Button>
+            </p>
+            
 
         </div>
     );

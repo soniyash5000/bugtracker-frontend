@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import "./Signup.css"
 
 // import  Input from '../Components/Input';
 
@@ -10,16 +11,16 @@ class Signup extends Component {
         teamname: '',
         password: '',
         projectname: '',
-        name1: '',
-        name2: '',
-        name3: '',
-        name4: '',
-        email1: '',
-        email2: '',
-        email3: '',
-        email4: '',
-        error: ''
+        error: '',
+        members: [
+            {
+                name: null,
+                email: null
+            }
+        ]
     }
+        // [name, email]
+
 
     onchangehandler = (event) => {
         console.log(event.target.id);
@@ -31,28 +32,16 @@ class Signup extends Component {
 
     buttonclickedhandler = (event) => {
         console.log("clicked");
+        const members = this.state.members.map(member => {
+            return Object.values(member);
+        })
+        console.log(members);
         let signup = {
             "team-name" : this.state.teamname,
             "password": this.state.password,
             "project-name": this.state.projectname,
-            "team-members" : [
-                [
-                    this.state.name1,
-                    this.state.email1
-                ],
-                [
-                    this.state.name2,
-                    this.state.email2
-                ],
-                [
-                    this.state.name3,
-                    this.state.email3
-                ],
-                [
-                    this.state.name4,
-                    this.state.email4
-                ]
-            ]
+            "team-members" : members
+            
         }
         event.preventDefault();
         console.log(signup);
@@ -68,9 +57,31 @@ class Signup extends Component {
                 // this.setState({error: error.response.data.message});
             }); 
     }
+
+    arraychangehandler = (event,index) => {
+        const id = event.target.id;
+        const value = event.target.value;
+        const values = [...this.state.members];
+        values[index][id] = value;
+        this.setState({members: values})
+
+    }
+    addmemberhandler = (event) => {
+        event.preventDefault();
+        const values = [...this.state.members];
+        const x = {
+            name: null,
+            email: null
+        }
+        values.push(x);
+        this.setState({members: values})
+    }
+
+
+
     render(){
         return (
-            <div>
+            <div className="signup">
                 <Form>
                     <Form.Group controlId="teamname">
                         <Form.Label>Team Name</Form.Label>
@@ -88,57 +99,39 @@ class Signup extends Component {
                     <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Project Name" />
                     </Form.Group>
 
+
                     
                     Enter details of team members
-                    {/* 1st member */}
-                    <Form.Group controlId="email1">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control onChange={this.onchangehandler} type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        </Form.Text>
-                    </Form.Group>
 
-                    <Form.Group controlId="name1">
-                        <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Name" />
-                </Form.Group> 
-                
-                {/* 2nd member */}
-                
-                <Form.Group controlId="email2">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
 
-                <Form.Group controlId="name2">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Name" />
-                    {/* 3rd member */}
-                </Form.Group> <Form.Group controlId="email3">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
+                    {
+                        this.state.members.map((tag,index) =>{
+                            return ( 
+                                <div key = {index}>
 
-                <Form.Group controlId="name3">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Name" />
-                    {/* 4 member */}
-                </Form.Group> <Form.Group controlId="email4">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
+                                <Form.Group controlId="email">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control onChange={(event) => this.arraychangehandler(event,index)} type="email" placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                </Form.Text>
+                            </Form.Group>
+        
+                            <Form.Group controlId="name">
+                                <Form.Label>Name</Form.Label>
+                            <Form.Control onChange={(event) => this.arraychangehandler(event,index)} type="text" placeholder="Enter Name" />
+                        </Form.Group> 
+                        </div>
 
-                <Form.Group controlId="name4">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={this.onchangehandler} type="text" placeholder="Enter Name" />
-                </Form.Group>
+                            )
+                        })
+                    }
+                        {/* Button to add user  */}
+                        <Button onClick={this.addmemberhandler} variant="primary" type="submit">
+                        Add
+                    </Button>
 
+
+                    
                 </Form>
                     {/* Enter details of team members
                     <Input/>
@@ -147,7 +140,7 @@ class Signup extends Component {
                     <Input/> */}
                     <p>{this.state.error}</p>
 
-                    <Button onClick={this.buttonclickedhandler} variant="primary" type="submit">
+                    <Button className="submit" onClick={this.buttonclickedhandler} variant="primary" type="submit">
                         Submit
                     </Button>
             </div>
@@ -157,3 +150,23 @@ class Signup extends Component {
 
 
 export default Signup;
+
+
+// "team-members" : [
+//    {
+//        name: "yash",
+//        email : "yashsoni@gmail.com"
+//    },
+//    {
+//     name: "yashwant",
+//     email : "yashwantsingh@gmail.com"
+//     },
+//     {
+//         name: "vedansh",
+//         email : "vedanshjain@gmail.com"
+//     },
+//     {
+//         name: "vinay",
+//         email : "vianyachari@gmail.com"
+//     }
+// ]
