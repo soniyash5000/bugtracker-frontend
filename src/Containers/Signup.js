@@ -101,7 +101,7 @@ class Signup extends Component {
 
 
                     
-                    Enter details of team members
+                    <p className="teammembers">Enter details of team members</p>
 
 
                     {

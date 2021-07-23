@@ -1,4 +1,11 @@
-.updateIssue{
+.updateIssue .heading{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+
+.updateIssue .updateIssueform{
     width : 45%;
     border: 2px solid grey;
     margin: 25px auto ;
@@ -6,10 +13,10 @@
     background-color: rgb(192, 190, 190);
 }
 
-.updateIssue .dropdown {
+.updateIssue .updateIssueform .dropdown {
     padding-left: 0px;
 }
 
-.updateIssue .updateIssueButton {
+.updateIssue .updateIssueform .updateIssueButton {
     width: 100%;
 }

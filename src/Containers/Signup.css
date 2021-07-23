@@ -5,6 +5,11 @@
     padding: 15px;
     background-color: rgb(192, 190, 190);
 }
+.signup .teammembers{
+    font-weight: bolder;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
 .signup .submit{
     width: 100%;
 }

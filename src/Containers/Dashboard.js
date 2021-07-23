@@ -70,9 +70,12 @@ class Dashboard extends Component  {
             </Navbar.Collapse>
             </Navbar>
             <div className="dashboard">
-                <div>
-                   <p><b>Team-Name:</b> {this.state.data["team-name"]}</p> 
-                    <p><b>Project-Name: </b>{this.state.data["project-name"]}</p>
+                <div className="projectdescription">
+                    <p><b>Team Name:</b> {this.state.data["team-name"]}</p> 
+                    <p><b>Project Name: </b>{this.state.data["project-name"]}</p>
+                </div>
+                 
+                    <div className="MainData">
                     {console.log(this.state.members)}
                     <div className = "cards">
                     {
@@ -80,11 +83,11 @@ class Dashboard extends Component  {
                             console.log(member);
                             return (
                                 <div key={member[0]}>
-                                    <Card style={{ width: '12rem' , 'marginBottom': '10px'}}>
+                                    <Card style={{ width: '15rem' , 'marginBottom': '10px'}}>
                                         <Card.Body>
                                             <Card.Title>{member[1].name} </Card.Title>
-                                            <Card.Subtitle className="mb-2 text-muted">{member[1].email}</Card.Subtitle>
-                                            <Card.Subtitle className="mb-2 text-muted"><b>Issues: </b> {member[1]["issue-working"]}</Card.Subtitle>
+                                            <Card.Subtitle className="mb-2 email text-muted">{member[1].email}</Card.Subtitle>
+                                            <Card.Subtitle className="mb-2 text-muted"><b>Issues Working: </b> {member[1]["issue-working"]}</Card.Subtitle>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -95,7 +98,9 @@ class Dashboard extends Component  {
                     </div>
 
                     {/* Issue Table */}
-                    <Table striped bordered hover>
+
+                <div className="table">
+                    <Table responsive="lg" striped bordered hover>
                         <thead  >
                             <tr>
                             <th>#</th>
@@ -149,6 +154,8 @@ class Dashboard extends Component  {
                     }
                         </tbody>
                     </Table>
+                </div>
+
                 </div>
             </div>
             

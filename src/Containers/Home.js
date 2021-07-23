@@ -1,16 +1,27 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
+import "./Home.css"
+
 
 const Home = (props) => {
     return (
-        <div>
-            I am home Page
-            <p>
-                <Button href="/login" variant="secondary">Login</Button>
+        <div className="home">
+            <p className="heading">
+                Track The Bug
             </p>
-            <p>
-                <Button href="/signup" variant="secondary">Register Team</Button>
-            </p>
+            <div className="box">
+                <div className="buttons">
+                    <p>
+                        <Button className="button" href="/login" variant="primary">Login</Button>
+                    </p>
+                    <p>
+                        <Button className="button" href="/signup" variant="primary">Register Team</Button>
+                    </p>
+                </div>
+            </div>
+
+            
+           
             
 
         </div>

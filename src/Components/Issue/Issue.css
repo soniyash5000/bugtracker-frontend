@@ -1,0 +1,16 @@
+.Issue .Issuedetails{
+    border: 2px solid grey;
+    width: 40%;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.Issue .Issuedetails .editbutton{
+    width: 100%;
+}
+
+.Issue .heading{
+    font-size: 1.5rem;
+    margin: 20px;
+    text-align: center;
+}

@@ -1,0 +1,17 @@
+.home .heading{
+    margin-top: 15px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.home .buttons{
+    margin: 30px auto;
+    border: 2px solid rgb(199, 187, 187);
+    width: 40%;
+    background-color: rgb(192, 190, 190);
+    padding: 15px;
+}
+
+.home .buttons .button{
+    width: 100%;
+}

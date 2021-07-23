@@ -68,46 +68,52 @@ class updateIssue extends Component {
         let data = this.state.data;
         return (
             <div className="updateIssue">
-                <Form>
-                    <Form.Group controlId="title">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control defaultValue={data.title} onChange={this.onchangehandler} type="text" placeholder="Enter title of the issue" />
-                        <Form.Text className="text-muted">
-                        </Form.Text>
-                    </Form.Group>
+                <div className="heading">
+                    Enter updated details for Issue {data.index}
+                </div>
+                <div className="updateIssueform">
+                    <Form>
+                        <Form.Group controlId="title">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control defaultValue={data.title} onChange={this.onchangehandler} type="text" placeholder="Enter title of the issue" />
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
 
-                    <Form.Group controlId="description">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control defaultValue={data.description} onChange={this.onchangehandler} as="textarea" placeholder="Enter description of the issue" />
-                    </Form.Group>
+                        <Form.Group controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control defaultValue={data.description} onChange={this.onchangehandler} as="textarea" placeholder="Enter description of the issue" />
+                        </Form.Group>
+                        
                     
-                   
 
-                    {/* Dropdown */}
+                        {/* Dropdown */}
 
-                    <Form.Group className="dropdown" as={Col} controlId="priority">
-                    <Form.Label>Priority</Form.Label>
-                    <Form.Control defaultValue={data.priority} onChange={this.onchangehandler} as="select" >
-                    <option  >1</option>
-                    <option >2</option>
-                    <option >3</option>
-                    </Form.Control>
-                    </Form.Group> 
+                        <Form.Group className="dropdown" as={Col} controlId="priority">
+                        <Form.Label>Priority</Form.Label>
+                        <Form.Control defaultValue={data.priority} onChange={this.onchangehandler} as="select" >
+                        <option  >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        </Form.Control>
+                        </Form.Group> 
 
-                    <Form.Group className="dropdown" as={Col} controlId="status">
-                    <Form.Label>Status</Form.Label>
-                    <Form.Control defaultValue={data.status} onChange={this.onchangehandler} as="select" >
-                    <option  >pending</option>
-                    <option >finished</option>
-                    </Form.Control>
-                    </Form.Group> 
+                        <Form.Group className="dropdown" as={Col} controlId="status">
+                        <Form.Label>Status</Form.Label>
+                        <Form.Control defaultValue={data.status} onChange={this.onchangehandler} as="select" >
+                        <option  >pending</option>
+                        <option >finished</option>
+                        </Form.Control>
+                        </Form.Group> 
 
-                    <Button className="updateIssueButton" onClick={this.submithandler} variant="primary" type="submit">
-                        Update Issue
-                    </Button>
+                        <Button className="updateIssueButton" onClick={this.submithandler} variant="primary" type="submit">
+                            Update Issue
+                        </Button>
 
-                </Form>
+                    </Form>
+                </div>
             </div>
+            
         )
     }
 }
